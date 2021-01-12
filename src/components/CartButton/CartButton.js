@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     color: var(--clr-white);
     padding: 12px;
   }
