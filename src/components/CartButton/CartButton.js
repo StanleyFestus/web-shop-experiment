@@ -42,12 +42,16 @@ export const Wrapper = styled.div`
     align-items: center;
     background: transparent;
     border-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     color: var(--clr-grey-1);
     letter-spacing: var(--spacing);
     svg {
       margin-left: 5px;
+    }
+    input[type="button"] {
+      display: block;
+      border: none;
     }
   }
 `

@@ -11,7 +11,6 @@ export const NavBar = () => {
   // const {myUser } = useUserContext();
   const myUser = null;
 
-  console.log(myUser)
   return (
     <NavContainer>
       <div className="nav-center">
