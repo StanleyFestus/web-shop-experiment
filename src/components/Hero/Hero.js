@@ -42,7 +42,7 @@ p {
     position: relative;
   }
   .main-img {
-    width: 85%;
+    width: 80%;
     height: 550px;
     margin-left: -40px;
     position: relative;
