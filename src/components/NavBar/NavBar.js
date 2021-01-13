@@ -52,6 +52,10 @@ const NavContainer = styled.nav`
       }
       .links {
         text-transform: uppercase;
+        color: var(--clr-green-dark);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;        
+        font-weight: 400;
       }
       a {
         color: var(--clr-grey-3);
