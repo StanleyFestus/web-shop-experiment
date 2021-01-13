@@ -68,12 +68,15 @@ const NavContainer = styled.nav`
       display: grid;
     }
 
+    .cart-btn-wrapper span button:focus {
+      outline-style: none;
+    }
+
     .navbar__link--active {
       border-bottom: 3px solid var(--clr-primary-5);
       );
       transition: border-bottom .5s ease-in-out;
     }
-    
   }
 `
 

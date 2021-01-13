@@ -33,7 +33,7 @@ const CartButton = () => {
         ) : (
           <button 
             type="button"
-            className="auth-btn"
+            className="auth-btn login"
             onClick={() => {console.log('Login')}}>
               Login 
               <FaUserPlus />

@@ -49,9 +49,13 @@ export const Wrapper = styled.div`
     svg {
       margin-left: 5px;
     }
-    input[type="button"] {
-      display: block;
+
+    .auth-btn:focus{
+      outline-style: none;
+    }
+    button:focus{
       border: none;
+      -moz-outline-style: none;
     }
   }
 `
