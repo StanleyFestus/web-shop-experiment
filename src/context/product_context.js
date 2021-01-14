@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
+import reducer from '../reducers/products_reducer';
 import { product_url as url} from '../utils/constants';
 
 import { 
@@ -24,7 +25,7 @@ const initialState = {
   single_product: {},
 }
 
-const ProductsContext = React.createContext();
+export const ProductsContext = React.createContext();
 
 export const ProductsProvider = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -71,23 +72,23 @@ export const ProductsProvider = ({children}) => {
     }
   }
 
+  const str = () => {
+    return "Hello"
+  }
+
   useEffect(() => {
     fetchProducts(url)
   })
 
   return (
-    <ProductsContext.Provider
-    value={{
-      ...state,
+    <ProductsContext.Provider value={
+      state,
       openSidebar,
       closeSidebar,
-      fetchSingleProduct
-    }}>
+      fetchSingleProduct,
+      str
+    }>
       {children}
     </ProductsContext.Provider>
   )
-}
-
-export const useProductsContext = () => {
-  return useContext(ProductsContext)
 }
