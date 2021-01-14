@@ -1,8 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductWrapper from './FeaturedProducts';
+import { useProductsContext } from '../../context/product_context';
 
 const FeaturedProducts = () => {
+  console.log(useProductsContext())
+  // const { 
+  //   featured_products: featured
+  // } = useProductsContext();
+
   return (
   <ProductWrapper className="section">
     <div className="title">
