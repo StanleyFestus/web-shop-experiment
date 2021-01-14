@@ -6,18 +6,22 @@ import { Links } from '../../utils/constants';
 import CartButtons from '.././CartButton';
 import { useUserContext } from '../../context/user_context';
 import '../../index.css';
+import logo from '../../assets/images/logo.png';
 
 export const NavBar = () => {
   // const {myUser } = useUserContext();
   const myUser = null;
 
-  console.log(myUser)
   return (
     <NavContainer>
       <div className="nav-center">
         <div className="nav-header">
-        <NavLink to="/"
-        > logo</NavLink>
+        <NavLink 
+          to="/">
+          <img 
+            src={logo}
+            alt="Anyanwu"/>
+        </NavLink>
       {/* <FaBars /> */}
         </div>
           <ul className="nav-links">

@@ -52,6 +52,10 @@ const NavContainer = styled.nav`
       }
       .links {
         text-transform: uppercase;
+        color: var(--clr-green-dark);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;        
+        font-weight: 400;
       }
       a {
         color: var(--clr-grey-3);
@@ -68,12 +72,15 @@ const NavContainer = styled.nav`
       display: grid;
     }
 
+    .cart-btn-wrapper span button:focus {
+      outline-style: none;
+    }
+
     .navbar__link--active {
       border-bottom: 3px solid var(--clr-primary-5);
       );
       transition: border-bottom .5s ease-in-out;
     }
-    
   }
 `
 

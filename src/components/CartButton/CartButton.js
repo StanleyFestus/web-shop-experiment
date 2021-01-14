@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 0.75rem;
+    font-size: 0.80rem;
     color: var(--clr-white);
     padding: 12px;
   }
@@ -42,12 +42,20 @@ export const Wrapper = styled.div`
     align-items: center;
     background: transparent;
     border-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     color: var(--clr-grey-1);
     letter-spacing: var(--spacing);
     svg {
       margin-left: 5px;
+    }
+
+    .auth-btn:focus{
+      outline-style: none;
+    }
+    button:focus{
+      border: none;
+      -moz-outline-style: none;
     }
   }
 `
