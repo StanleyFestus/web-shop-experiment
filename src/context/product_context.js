@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useReducer } from 'react';
-import axios from 'axios';
-import { product_url as url} from '../utils/constants';
-
-import { 
+import axios from 'axios'
+import React, { useEffect, useReducer } from 'react'
+import reducer from '../reducers/products_reducer'
+import { products_url as url } from '../utils/constants';
+import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
   GET_PRODUCTS_BEGIN,
@@ -11,7 +11,7 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
-} from '../actions';
+} from '../actions'
 
 const initialState = {
   isSidebarOpen: false,
@@ -22,43 +22,40 @@ const initialState = {
   single_product_loading: false,
   single_product_error: false,
   single_product: {},
+  string: 'This is the state'
 }
 
-const ProductsContext = React.createContext();
+const StateProductsContext = React.createContext();
+const DispatchProductsContext = React.createContext();
+const OpenSidebarContext = React.createContext();
 
-export const ProductsProvider = ({children}) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  
+export const ProductsProvider = (props) => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   const openSidebar = () => {
-    dispatch({
-      type: SIDEBAR_OPEN
-    })
+    dispatch({ type: SIDEBAR_OPEN })
   }
-
   const closeSidebar = () => {
-    dispatch({
-      type: SIDEBAR_CLOSE,
-    })
+    dispatch({ type: SIDEBAR_CLOSE })
   }
 
-  const fetchProducts = async(url) => {
-    dispatch({type: GET_PRODUCTS_BEGIN})
+  const fetchProducts = async (url) => {
+    dispatch({ 
+      type: GET_PRODUCTS_BEGIN })
     try {
-      const response = await axios.get(url);
-      const products = response.data;
-      dispatch({
-        type: GET_PRODUCTS_SUCCESS,
-        payload: products
-      })
-    } catch (error){
-      dispatch({
-        type: GET_PRODUCTS_ERROR
-      })
+      const response = await axios.get(url)
+      const products = response.data
+      dispatch({ 
+        type: GET_PRODUCTS_SUCCESS, 
+        payload: products })
+    } catch (error) {
+      dispatch({ type: GET_PRODUCTS_ERROR })
     }
   }
-
   const fetchSingleProduct = async (url) => {
-    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
+    dispatch({ 
+      type: GET_SINGLE_PRODUCT_BEGIN 
+    })
     try {
       const response = await axios.get(url)
       const singleProduct = response.data
@@ -66,28 +63,40 @@ export const ProductsProvider = ({children}) => {
         type: GET_SINGLE_PRODUCT_SUCCESS, 
         payload: singleProduct })
     } catch (error) {
-      dispatch({ 
-        type: GET_SINGLE_PRODUCT_ERROR })
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
     }
   }
 
   useEffect(() => {
     fetchProducts(url)
-  })
-
+  }, [])
+  
   return (
-    <ProductsContext.Provider
-    value={{
-      ...state,
-      openSidebar,
-      closeSidebar,
-      fetchSingleProduct
-    }}>
-      {children}
-    </ProductsContext.Provider>
+    <StateProductsContext.Provider value={state}>
+      <DispatchProductsContext.Provider value={dispatch}>
+        {props.children}
+      </DispatchProductsContext.Provider>
+    </StateProductsContext.Provider>
   )
 }
 
-export const useProductsContext = () => {
-  return useContext(ProductsContext)
+const useStateProvider = () => {
+  const context = React.useContext(StateProductsContext);
+  if(context === undefined){
+    throw new Error('Must be between provider')
+  }
+  return context;
+}
+
+const useDispatchProvider = () => {
+  const context = React.useContext(DispatchProductsContext);
+  if(context == undefined){
+    throw new Error('Must be within provider')
+  }
+  return context
+}
+
+export {  
+  useStateProvider, 
+  useDispatchProvider, 
 }

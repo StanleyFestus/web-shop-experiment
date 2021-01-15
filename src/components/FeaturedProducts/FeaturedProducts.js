@@ -10,6 +10,11 @@ const ProductWrapper = styled.section`
       height: 225px;
     }
   }
+
+  .section {
+    display: flex;
+    text-align: center;
+  }
   .btn {
     display: block;
     width: 148px;
@@ -23,6 +28,11 @@ const ProductWrapper = styled.section`
     .featured {
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
+  }
+
+  .title {
+    color: var(--clr-green-dark);
+    font-size: 2rem;
   }
 `
 
